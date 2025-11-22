@@ -10,9 +10,9 @@ variable "PrivateSubnetPrefix" {
 	type = string
 }
 
-variable "PublicSecurityRuleSourceIpPrefix" {
-	description = "IP Address /32 or IP CIDR range connecting inbound to App"
-	type = string
+variable "PublicSecurityRuleSourceIpPrefixes" {
+	description = "List of IP Addresses /32 or IP CIDR ranges connecting inbound to App"
+	type = list(string)
 }
 
 variable "PublicSubnetPrefix" {
@@ -48,10 +48,6 @@ variable "UserLoginTag" {
 	default = "terraform"
 	description = "Login ID tag of user creating the deployment"
 	type = string
-	validation {
-		condition = length(var.UserLoginTag) >= 4
-		error_message = "UserLoginTag minimum length must be >= 4."
-	}
 }
 
 variable "UserProjectTag" {
@@ -61,7 +57,7 @@ variable "UserProjectTag" {
 }
 
 variable "Version" {
-	default = "11-00"
+	default = "11-20"
 	description = "Versioning of the application using the deployment"
 	type = string
 }

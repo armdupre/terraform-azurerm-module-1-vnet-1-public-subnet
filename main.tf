@@ -37,12 +37,11 @@ resource "azurerm_network_security_group" "PublicNetworkSecurityGroup" {
 		protocol = "Tcp"
 		source_port_range = "*"
 		destination_port_range = "443"
-		source_address_prefix = local.PublicSecurityRuleSourceIpPrefix
 		destination_address_prefix = "*"
 		access = "Allow"
 		priority = 100
 		direction = "Inbound"
-		source_address_prefixes = []
+		source_address_prefixes = local.PublicSecurityRuleSourceIpPrefixes
 		destination_address_prefixes = []
 	}
 	security_rule {
@@ -51,12 +50,11 @@ resource "azurerm_network_security_group" "PublicNetworkSecurityGroup" {
 		protocol = "Tcp"
 		source_port_range = "*"
 		destination_port_range = "22"
-		source_address_prefix = local.PublicSecurityRuleSourceIpPrefix
 		destination_address_prefix = "*"
 		access = "Allow"
 		priority = 101
 		direction = "Inbound"
-		source_address_prefixes = []
+		source_address_prefixes = local.PublicSecurityRuleSourceIpPrefixes
 		destination_address_prefixes = []
 	}
 	security_rule {
@@ -65,12 +63,11 @@ resource "azurerm_network_security_group" "PublicNetworkSecurityGroup" {
 		protocol = "Tcp"
 		source_port_range = "*"
 		destination_port_range = "80"
-		source_address_prefix = local.PublicSecurityRuleSourceIpPrefix
 		destination_address_prefix = "*"
 		access = "Allow"
 		priority = 102
 		direction = "Inbound"
-		source_address_prefixes = []
+		source_address_prefixes = local.PublicSecurityRuleSourceIpPrefixes
 		destination_address_prefixes = []
 	}
 } 
